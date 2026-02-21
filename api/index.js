@@ -3,11 +3,11 @@ dns.setServers(['8.8.8.8', '1.1.1.1']);
 import express from 'express';
 import mongoose from 'mongoose'; 
 import dotenv from 'dotenv';
+import userRouter from './routes/user.route.js';
 
 dotenv.config();
 const app = express(); 
 app.use(express.json());
-console.log(process.env.MONGO);
 
 mongoose.connect(process.env.MONGO).then(()=>{ 
   console.log("Connected to MongoDB"); 
@@ -18,4 +18,5 @@ mongoose.connect(process.env.MONGO).then(()=>{
 } ).catch((err)=>{ 
   console.error("Error connecting to MongoDB", err); 
 });
+app.use("/api/user", userRouter);  
 

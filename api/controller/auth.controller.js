@@ -27,6 +27,7 @@ export const signin = async (req, res, next) => {
     const validuser = await User.findOne({ email });
     if (!validuser) {
       return next(errorHandle(404, "User not found"));
+      console.log("vu "+validuser);
     }
     const isPasswordValid = bcrypt.compareSync(password, validuser.password);
     if (!isPasswordValid) {

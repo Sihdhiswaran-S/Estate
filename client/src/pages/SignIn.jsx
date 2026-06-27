@@ -6,6 +6,7 @@ import {
   signInError,
   signInSuccess,
 } from "../redux/user/UserSlice";
+import OAuth from "../component/OAuth";
 function SignIn() {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
@@ -64,7 +65,9 @@ function SignIn() {
           className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 uppercase">
           {loading ? "Signing In..." : "Sign In"}
         </button>
+        <OAuth />
       </form>
+
       <div>
         <p className="text-center mt-4">
           Don't have an account?{" "}

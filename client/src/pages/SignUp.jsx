@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
+import OAuth from "../component/OAuth";
 
 function SignUp() {
   const [formData, setFormData] = useState({});
@@ -63,10 +64,14 @@ function SignUp() {
           id="password"
           onChange={handlechange}
         />
-        <button disabled={loading} className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 uppercase">
-         {loading ? "Signing Up..." : "Sign Up"}
+        <button
+          disabled={loading}
+          className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 uppercase">
+          {loading ? "Signing Up..." : "Sign Up"}
         </button>
+        <OAuth />
       </form>
+
       <div>
         <p className="text-center mt-4">
           Already have an account?{" "}
@@ -75,8 +80,8 @@ function SignUp() {
           </Link>
         </p>
       </div>
-      {error && <p className="text-red-500 text-center mt-4">{error }</p>}
-    </div> 
+      {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+    </div>
   );
 }
 

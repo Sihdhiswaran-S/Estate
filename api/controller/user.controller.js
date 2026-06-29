@@ -5,10 +5,10 @@ export const testUserRoute = (req, res) => {
   res.json({ message: "User route is working!" });
 };
 export const userUpdate = async (req, res, next) => {
-  if (req.user.id === req.params.id)
+  if (req.user.id !== req.params.id)
     return next(errorHandle(403, "You can update only your account!"));
   try {
-    if (req.body.password) { 
+    if (req.body.password) {
       req.body.password = bcrypt.hashSync(req.body.password, 10);
     }
     const updatedUser = await User.findByIdAndUpdate(
